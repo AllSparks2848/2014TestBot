@@ -61,6 +61,9 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+        SparkyDriveHelper.arcadeDrive(xbox1, drivetrain);
+        SparkyMotorControllerClass.controlMotors();
+        SparkyPneumaticsController.pneumaticToggle();
         
     }
     
