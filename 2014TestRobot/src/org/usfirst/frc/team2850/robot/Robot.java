@@ -19,19 +19,19 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-	public Joystick xbox1;
-	public Joystick xbox2;
+	public static Joystick xbox1;
+	public static Joystick xbox2;
 	
-	public RobotDrive drivetrain;
+	public static RobotDrive drivetrain;
 	
-	public Solenoid shifter1;
-	public Solenoid shifter2;
+	public static Solenoid shifter1;
+	public static Solenoid shifter2;
 	
-	public Victor motor1;
-	public Victor motor2;
-	public Victor motor3;
-	public Victor motor4;
-	public Victor motor5;
+	public static Victor motor1;
+	public static Victor motor2;
+	public static Victor motor3;
+	public static Victor motor4;
+	public static Victor motor5;
 	
     public void robotInit() {
     	xbox1 = new Joystick(0);
