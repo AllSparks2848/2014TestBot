@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2850.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+
 public class SparkyPneumaticsController {
 
 	private static boolean shifterstate= false;
@@ -17,7 +19,7 @@ public class SparkyPneumaticsController {
 			wasrightbutton = true;
 			shifterstate = false;
 		}
-		Robot.shifter1.set(shifterstate);
-		Robot.shifter2.set(shifterstate);
+		Robot.shifter1.set(shifterstate ? Value.kForward : Value.kReverse);
+		Robot.shifter2.set(shifterstate ? Value.kForward : Value.kReverse);
 	}
 }

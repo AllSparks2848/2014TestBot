@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team2850.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -24,8 +25,8 @@ public class Robot extends IterativeRobot {
 	
 	public static RobotDrive drivetrain;
 	
-	public static Solenoid shifter1;
-	public static Solenoid shifter2;
+	public static DoubleSolenoid shifter1;
+	public static DoubleSolenoid shifter2;
 	
 	public static Victor motor1;
 	public static Victor motor2;
@@ -39,8 +40,8 @@ public class Robot extends IterativeRobot {
     	
     	drivetrain = new RobotDrive(new Victor(0), new Victor(1));
     	
-    	shifter1 = new Solenoid(0);
-    	shifter2 = new Solenoid(1);
+    	shifter1 = new DoubleSolenoid(0,1);
+    	shifter2 = new DoubleSolenoid(2,3);
     	
     	motor1 = new Victor(2);
     	motor2 = new Victor(3);
