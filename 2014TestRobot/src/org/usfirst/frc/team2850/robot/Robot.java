@@ -55,7 +55,7 @@ public class Robot extends IterativeRobot {
     	motor4 = new Victor(5);
     	motor5 = new Victor(6);
     	
-    	ahrs = new AHRS(I2C.Port.kMXP); 
+    	ahrs = new AHRS(I2C.Port.kOnboard); 
 
     }
 
@@ -73,6 +73,8 @@ public class Robot extends IterativeRobot {
         SparkyDriveHelper.arcadeDrive(xbox1, drivetrain);
         SparkyMotorControllerClass.controlMotors();
         SparkyPneumaticsController.pneumaticToggle();
+        
+        System.out.println(ahrs.getPitch() + " " + ahrs.getRoll() + " " + ahrs.getAngle()+ " " + ahrs.getVelocityX() + " " + ahrs.getVelocityY() + " " + ahrs.getVelocityZ());
         
     }
     
