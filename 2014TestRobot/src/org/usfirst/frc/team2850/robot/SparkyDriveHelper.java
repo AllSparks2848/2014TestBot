@@ -9,7 +9,7 @@ public class SparkyDriveHelper {
 	
 	public static void arcadeDrive( Joystick xbox, RobotDrive drive){
 		
-		drive.arcadeDrive(xbox.getRawAxis(1), xbox.getRawAxis(4)); 
+		drive.arcadeDrive(xbox.getRawAxis(1), -xbox.getRawAxis(4)); 
         	
         
 	}

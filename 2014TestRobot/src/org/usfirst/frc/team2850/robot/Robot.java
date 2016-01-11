@@ -1,12 +1,16 @@
 
 package org.usfirst.frc.team2850.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.I2C;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -34,6 +38,8 @@ public class Robot extends IterativeRobot {
 	public static Victor motor4;
 	public static Victor motor5;
 	
+	AHRS ahrs;
+	
     public void robotInit() {
     	xbox1 = new Joystick(0);
     	xbox2 = new Joystick(1);
@@ -48,6 +54,8 @@ public class Robot extends IterativeRobot {
     	motor3 = new Victor(4);
     	motor4 = new Victor(5);
     	motor5 = new Victor(6);
+    	
+    	ahrs = new AHRS(I2C.Port.kMXP); 
 
     }
 
