@@ -5,9 +5,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.I2C;
-import com.kauailabs.navx.frc.AHRS;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -34,8 +33,6 @@ public class Robot extends IterativeRobot {
 	public static Victor motor4;
 	public static Victor motor5;
 	
-	AHRS ahrs;
-	
     public void robotInit() {
     	xbox1 = new Joystick(0);
     	xbox2 = new Joystick(1);
@@ -50,8 +47,7 @@ public class Robot extends IterativeRobot {
     	motor3 = new Victor(4);
     	motor4 = new Victor(5);
     	motor5 = new Victor(6);
-    	
-    	ahrs = new AHRS(I2C.Port.kOnboard); 
+  
 
     }
 
@@ -70,8 +66,8 @@ public class Robot extends IterativeRobot {
         SparkyMotorControllerClass.controlMotors();
         SparkyPneumaticsController.pneumaticToggle();
         
-        System.out.println(ahrs.getPitch() + " " + ahrs.getRoll() + " " + ahrs.getAngle()+ " " + ahrs.getVelocityX() + " " + ahrs.getVelocityY() + " " + ahrs.getVelocityZ());
-        
+       
+        Timer.delay(0.01);
     }
     
     /**

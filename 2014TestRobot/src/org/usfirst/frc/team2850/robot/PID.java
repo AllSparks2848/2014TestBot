@@ -16,7 +16,6 @@ public class PID {
 	private double max = 100;
 	private double mini = -100;
 	private double maxi = 100;
-	private double lasterror = 0;
 	private double lastinput = 0;
 	
 	public PID(double pterm, double iterm, double dterm, double target, double startingval) {
@@ -46,10 +45,9 @@ public class PID {
 		double d = dterm*(input-lastinput)/deltatime; //calculate derivative of error, preventing derivative kick by only looking at input
 		lastinput = input;
 		
-		i += iterm*(error-lasterror)*deltatime; // calculates integral of error
+		i += iterm*error*deltatime; // calculates integral of error
 		if(i < mini) i = mini; //clamps to prevent integral windup
 		if(i > maxi) i = maxi;
-		lasterror = error;
 		
 		double output = p+i+d;
 		if(output < min) output = min; // clamps output
