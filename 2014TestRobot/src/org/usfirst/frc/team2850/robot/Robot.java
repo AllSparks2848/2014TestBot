@@ -57,9 +57,10 @@ public class Robot extends IterativeRobot {
     	
     	encoder = new Encoder(0, 1, false, EncodingType.k4X);
   
-    	distancepid = new PID(0, 0, 0, 50000, 0);
-    	velocitypid = new PID(0, 0, 0, 0, 0);
-    	distancepid.setBounds(-20000, 20000);
+    	distancepid = new PID(.6, 0, .05, 100000, 0);
+    	velocitypid = new PID(0.00018, 0.000015, 0.000001, 0, encoder.getRate());
+    	distancepid.setBounds(-10000, 10000);
+    	velocitypid.setITermBounds(-0.5, 0.5);
     	velocitypid.setBounds(-1, 1);
     }
 
@@ -76,9 +77,9 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         double target = distancepid.compute(encoder.getDistance());
         velocitypid.setTarget(target);
-    	double output = distancepid.compute(encoder.getRate());
+    	double output = velocitypid.compute(encoder.getRate());
     	drivetrain.tankDrive(0,output);
-       
+    	System.out.println(encoder.getRate() + " " + encoder.getDistance() + " " + target + " " + output);
         Timer.delay(0.01);
     }
     
