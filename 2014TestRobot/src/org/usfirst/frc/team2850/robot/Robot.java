@@ -1,7 +1,9 @@
 
 package org.usfirst.frc.team2850.robot;
 
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -33,6 +35,11 @@ public class Robot extends IterativeRobot {
 	public static Victor motor4;
 	public static Victor motor5;
 	
+	public static PID velocitypid;
+	public static PID distancepid;
+	
+	public static Encoder encoder;
+	
     public void robotInit() {
     	xbox1 = new Joystick(0);
     	xbox2 = new Joystick(1);
@@ -47,8 +54,13 @@ public class Robot extends IterativeRobot {
     	motor3 = new Victor(4);
     	motor4 = new Victor(5);
     	motor5 = new Victor(6);
+    	
+    	encoder = new Encoder(0, 1, false, EncodingType.k4X);
   
-
+    	distancepid = new PID(0, 0, 0, 50000, 0);
+    	velocitypid = new PID(0, 0, 0, 0, 0);
+    	distancepid.setBounds(-25000, 25000);
+    	velocitypid.setBounds(-1, 1);
     }
 
     /**
@@ -62,10 +74,10 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        SparkyDriveHelper.arcadeDrive(xbox1, drivetrain);
-        SparkyMotorControllerClass.controlMotors();
-        SparkyPneumaticsController.pneumaticToggle();
-        
+        double target = distancepid.compute(encoder.getDistance());
+        velocitypid.setTarget(target);
+    	double output = distancepid.compute(encoder.getRate());
+    	drivetrain.tankDrive(0,output);
        
         Timer.delay(0.01);
     }
