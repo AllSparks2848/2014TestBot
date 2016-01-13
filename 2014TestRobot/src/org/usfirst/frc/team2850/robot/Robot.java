@@ -59,7 +59,7 @@ public class Robot extends IterativeRobot {
   
     	distancepid = new PID(0, 0, 0, 50000, 0);
     	velocitypid = new PID(0, 0, 0, 0, 0);
-    	distancepid.setBounds(-25000, 25000);
+    	distancepid.setBounds(-20000, 20000);
     	velocitypid.setBounds(-1, 1);
     }
 
