@@ -34,6 +34,10 @@ public class PID {
 		this.target = target;
 	}
 	
+	public double getTarget() {
+		return target;
+	}
+	
 	public double compute(double input) {
 		double error = target-input; //calculate error of the system	
 		double p = pterm*error; //get proportional term of error
@@ -49,7 +53,7 @@ public class PID {
 		if(i < mini) i = mini; //clamps to prevent integral windup
 		if(i > maxi) i = maxi;
 		
-		double output = p+i+d;
+		double output = p+i-d;
 		if(output < min) output = min; // clamps output
 		if(output > max) output = max;
 		
