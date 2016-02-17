@@ -59,10 +59,10 @@ public class Robot extends IterativeRobot {
     	motor4 = new Victor(5);
     	motor5 = new Victor(6);
     	
-    	encoder = new Encoder(0, 1, false, EncodingType.k4X);
+//    	encoder = new Encoder(0, 1, false, EncodingType.k4X);
     	
-    	accelerometer = new I2C(Port.kOnboard, 0x53);
-    	accelerometer.write(0x2d, 0b00001000);
+//    	accelerometer = new I2C(Port.kOnboard, 0x53);
+//    	accelerometer.write(0x2d, 0b00001000);
 //    	distancepid = new PID(.6, 0, .05, 100000, 0);
 //    	velocitypid = new PID(0.00018, 0.000015, 0.000001, 0, encoder.getRate());
 //    	distancepid.setBounds(-10000, 10000);
@@ -86,13 +86,13 @@ public class Robot extends IterativeRobot {
 //    	double output = velocitypid.compute(encoder.getRate());
 //    	drivetrain.tankDrive(0,output);
 //    	System.out.println(encoder.getRate() + " " + encoder.getDistance() + " " + target + " " + output);
-    	byte[] data = new byte[1];
-    	accelerometer.read(0x32, 1, data);
+//    	byte[] data = new byte[1];
+//    	accelerometer.read(0x32, 1, data);
 //    	short x = (short) ((short)(data[0]) | (short)(data[1]<< 8));
 //    	short y = (short) ((short)(data[2]) | (short)(data[3]<< 8));
 //    	short z = (short) ((short)(data[4]) | (short)(data[5]<< 8));
-    	System.out.println(data[0]);
-        Timer.delay(0.01);
+//    	System.out.println(data[0]);
+//        Timer.delay(0.01);
     }
     
     /**
